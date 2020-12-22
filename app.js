@@ -44,10 +44,10 @@ app.get("/",function(req,res){
 app.get("/register",function(req,res){
     res.render("register")
 })
-app.get("/create",function(req,res){
+app.get("/create",auth,function(req,res){
     res.render("createEmployee")
 })
-app.get("/home",function(req,res){
+app.get("/home",auth,function(req,res){
     res.render("fileupload")
 })
 
@@ -164,7 +164,7 @@ app.post("/register",function(req,res){
         //     success:true,
         //     // userdata:doc
         // })
-        res.redirect("/allemps")
+        res.render("login")
     })
     // res.status(200);
 });

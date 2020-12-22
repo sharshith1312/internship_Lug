@@ -8,23 +8,32 @@
 </head>
 <body>
 
-    <div>
-        <%allEmps.forEach(function(emp){ %>
-            <div style="border: 2px solid red; width: 400px;">
-                <h3>Employee id :</h3>
-                <span><%= emp.employee_id %> </span>
+    <div class="container mt-4" >
+        <div class="row">
+            
+                <%allEmps.forEach(function(emp){ %>
+                    <div style="border: 2px solid gray; background-color: azure;" class="col-sm">
+                        <h3>Employee id : <span><%= emp.employee_id %> </span></h3>
+                        
+        
+                        <br>
+                        <div style="display: flex;justify-content: space-around;">
+                            <a href="/download/<%= emp._id %> " class="btn btn-success">Download</a>
+                            <form id="inline" action="/allemps/<%= emp._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-xs btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                        
+                <% })%>
+        
+        </div>
+      </div>
 
-                <br>
-                <a href="/download/<%= emp._id %> " class="btn btn-success">Download</a>
-                <form id="inline" action="/allemps/<%= emp._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-xs btn-danger">Delete</button>
-                </form>
-            </div>
-                
-        <% })%>
-    </div>
-    <div class="text-center">
-        <a href="/" class="btn btn-success">Create Employee</a>
+    
+    <div class="text-center mt-3">
+        <a href="/create" class="btn btn-success">Create Employee</a>
         <a href="/home" class="btn btn-success">Upload files</a>
         <a href="/logout" class="btn btn-danger">Logout</a>
     </div>
